@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/SimuladorHormigas/SimuladorHormigas.iml" filepath="$PROJECT_DIR$/SimuladorHormigas/SimuladorHormigas.iml" />
       <module fileurl="file://$PROJECT_DIR$/Simulador_Colonias_De_Hormigas.iml" filepath="$PROJECT_DIR$/Simulador_Colonias_De_Hormigas.iml" />
     </modules>
   </component>
