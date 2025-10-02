@@ -23,8 +23,12 @@ public class Posicion {
     //Creamos el metodo para comprobar si la posicion está dentro de los límites del mapa
     //0(1) -> solo hace comparaciones logicas
     //maxX -> es el ancho del mapa, maxY -> es el alto del mapa
-    public boolean dentroLimites(int maxX, int maxY){
-        return (x >= 0 && x < maxX) && (y >= 0 && y < maxY);
+    public boolean dentroLimites(int maxX, int maxY) {
+        if ((x >= 0 && x < maxX) && (y >= 0 && y < maxY)) {
+            return true;
+        }else {
+            return false;
+        }
     }
 
     //Creamos el metodo para mover la posicion sumando los desplazamientos especificos, IMPORTANTE: devuelve una nueva posicion no modifica la original
