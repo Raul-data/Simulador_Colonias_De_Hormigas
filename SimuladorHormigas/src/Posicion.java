@@ -1,3 +1,4 @@
+//Clase que representa una posicion (x,y) dentro del mapa
 public class Posicion {
     //Creamos los atributos: coordenadas de la posición
     private final int x; //Coordenada horizontal (columna)
