@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9ee8a8c2-41f1-4482-9b45-774f0950a65d" name="Changes" comment="Añadir enum TipoHormiga con tipos OBRERA, GUERRERA y REINA">
-      <change beforePath="$PROJECT_DIR$/SimuladorHormigas/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/SimuladorHormigas/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SimuladorHormigas/src/Mapa.java" beforeDir="false" afterPath="$PROJECT_DIR$/SimuladorHormigas/src/Mapa.java" afterDir="false" />
-    </list>
+    <list default="true" id="9ee8a8c2-41f1-4482-9b45-774f0950a65d" name="Changes" comment="Correcion de mapa y implementacion de main para ver el mapa" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -85,7 +82,7 @@
       <workItem from="1759395573466" duration="9099000" />
       <workItem from="1759413879162" duration="607000" />
       <workItem from="1759497999900" duration="2740000" />
-      <workItem from="1759653390534" duration="4583000" />
+      <workItem from="1759653390534" duration="4940000" />
     </task>
     <task id="LOCAL-00001" summary="new">
       <option name="closed" value="true" />
@@ -143,7 +140,15 @@
       <option name="project" value="LOCAL" />
       <updated>1759500386235</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Correcion de mapa y implementacion de main para ver el mapa">
+      <option name="closed" value="true" />
+      <created>1759688045408</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1759688045408</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -168,6 +173,7 @@
     <MESSAGE value="clase mapa pero sin terminar" />
     <MESSAGE value="enum" />
     <MESSAGE value="Añadir enum TipoHormiga con tipos OBRERA, GUERRERA y REINA" />
-    <option name="LAST_COMMIT_MESSAGE" value="Añadir enum TipoHormiga con tipos OBRERA, GUERRERA y REINA" />
+    <MESSAGE value="Correcion de mapa y implementacion de main para ver el mapa" />
+    <option name="LAST_COMMIT_MESSAGE" value="Correcion de mapa y implementacion de main para ver el mapa" />
   </component>
 </project>

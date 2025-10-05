@@ -1,0 +1,13 @@
+# Ignorar carpetas de compilación
+out/
+
+# Ignorar archivos compilados de Java
+*.class
+
+# Ignorar configuración local de IntelliJ
+.idea/
+*.iml
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db
