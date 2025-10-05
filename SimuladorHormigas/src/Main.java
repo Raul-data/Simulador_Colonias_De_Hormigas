@@ -1,3 +1,5 @@
+import java.util.HashMap;
+
 public class Main {
     public static void main(String[] args){
         try{
@@ -5,7 +7,7 @@ public class Main {
             Mapa mapa = new Mapa();
 
             //preparamos el mapa
-            mapa.prepararMapa(new java.util.HashMap<>());
+            mapa.prepararMapa(new HashMap<>());
 
             //mostramos el mapa
             mapa.mostrarMapa();

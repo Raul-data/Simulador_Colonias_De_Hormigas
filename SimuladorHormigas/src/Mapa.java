@@ -8,20 +8,21 @@ public class Mapa {
     public static final int ANCHO = 10;
     public static final int ALTO = 10;
 
+    //Creamos los simbolos que representaran la visualizacion del mapa
+    private static final char VACIO = '.'; //Simbolo para representar terreno vacio
+    private static final char HORMIGUERO = 'H'; //Simbolo para representar el hormiguero
+
     //Creamos la posicion del Hormiguero representado con "H"
     private final Posicion hormiguero;
 
     //Creamos la matriz que representara el mapa de una forma visual
     private final char[][] mapa;
 
-    //Creamos los simbolos que representaran la visualizacion del mapa
-    private static final char VACIO = '.'; //Simbolo para representar terreno vacio
-    private static final char HORMIGUERO = 'H'; //Simbolo para representar el hormiguero
 
     //Creamos el constructor Mapa() que inicializa el mapa
     //0(n^2) -> inicializa la matriz ALTO X ANCHO
     public Mapa(){
-        this.mapa = new char[ANCHO][ALTO];
+        this.mapa = new char[ALTO][ANCHO];
         this.hormiguero = new Posicion(ANCHO / 2, ALTO / 2); // para asignar al centro
 
         //Iniciamos el mapa vacio
@@ -49,13 +50,30 @@ public class Mapa {
         return (posicion.getX() >= 0 && posicion.getX() < ANCHO && posicion.getY() >= 0 && posicion.getY() < ALTO);
     }
 
+
+    //Mostrar mapa con synchronized
+    public synchronized void mostrarMapa(){
+        System.out.println("\n=== MAPA DE LA COLONIA ===\n");
+
+        //Recorremos el mapa fila por fila
+        for(int y = 0; y < ALTO; y++){
+            for(int x = 0; x < ANCHO; x++){
+                System.out.print(mapa[y][x] + " ");
+            }
+            System.out.println(); //Añadimos una linea nueva al terminar la fila
+        }
+
+        System.out.println("\n==========================\n");
+    }
+
+
     //preapara el mapa colocando hormiguero mas hormigas activas
     //0(n^2)
     public void prepararMapa(HashMap<String, Hormiga>hormigas){
         //Rellenamos con VACIO
         for(int y = 0; y < ALTO; y++){
             for(int x = 0; x < ANCHO; x++){
-                mapa[x][y] = VACIO;
+                mapa[y][x] = VACIO;
             }
         }
 
@@ -63,11 +81,11 @@ public class Mapa {
         mapa[hormiguero.getY()][hormiguero.getX()] = HORMIGUERO;
 
         //Colocamos hormigas en el mapa
-        for(Hormiga h : hormigas.values()){
-            Posicion pos = h.getPosicion();
-            if(dentroLimites(pos)){
-                mapa[pos.getY()][pos.getX()] =
-            }
-        }
+//        for(Hormiga hormiga : hormigas.values()){
+//            Posicion pos = hormiga.getPosicion();
+//            if(dentroLimites(pos)){
+//                mapa[pos.getY()][pos.getX()] = hormiga.getTipo().getSimbolo().chatAt(0);
+//            }
+//        }
     }
 }
