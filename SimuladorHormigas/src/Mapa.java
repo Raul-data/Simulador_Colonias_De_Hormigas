@@ -51,7 +51,8 @@ public class Mapa {
     }
 
 
-    //Mostrar mapa con synchronized
+    //Mostrar mapa en consola con synchronized
+    //0(n^2)
     public synchronized void mostrarMapa(){
         System.out.println("\n=== MAPA DE LA COLONIA ===\n");
 
