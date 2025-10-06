@@ -28,7 +28,7 @@ public class Mapa {
         //Iniciamos el mapa vacio
         for(int y = 0; y < ALTO; y++){
             for(int x = 0; x < ANCHO; x++){
-                mapa[x][y] = VACIO;
+                mapa[y][x] = VACIO;
             }
         }
 
@@ -85,7 +85,7 @@ public class Mapa {
 //        for(Hormiga hormiga : hormigas.values()){
 //            Posicion pos = hormiga.getPosicion();
 //            if(dentroLimites(pos)){
-//                mapa[pos.getY()][pos.getX()] = hormiga.getTipo().getSimbolo().chatAt(0);
+//                mapa[pos.getY()][pos.getX()] = hormiga.getTipo().getSimbolo().charAt(0);
 //            }
 //        }
     }

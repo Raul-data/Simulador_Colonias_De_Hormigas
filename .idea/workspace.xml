@@ -4,8 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9ee8a8c2-41f1-4482-9b45-774f0950a65d" name="Changes" comment="creamos la clase hormiga y en el mapa para mostrar mapa en el main">
+    <list default="true" id="9ee8a8c2-41f1-4482-9b45-774f0950a65d" name="Changes" comment="creamos la clase HormigaObrera con su constructor y dejamos vacion el metodo run">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SimuladorHormigas/src/Mapa.java" beforeDir="false" afterPath="$PROJECT_DIR$/SimuladorHormigas/src/Mapa.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SimuladorHormigas/src/SimuladorColoniasHormigas.java" beforeDir="false" afterPath="$PROJECT_DIR$/SimuladorHormigas/src/SimuladorColoniasHormigas.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SimuladorHormigas/HormigaObrera.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SimuladorHormigas/HormigaObrera.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,7 +87,7 @@
       <workItem from="1759395573466" duration="9099000" />
       <workItem from="1759413879162" duration="607000" />
       <workItem from="1759497999900" duration="2740000" />
-      <workItem from="1759653390534" duration="8779000" />
+      <workItem from="1759653390534" duration="10977000" />
     </task>
     <task id="LOCAL-00001" summary="new">
       <option name="closed" value="true" />
@@ -166,7 +169,15 @@
       <option name="project" value="LOCAL" />
       <updated>1759690173003</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="creamos la clase HormigaObrera con su constructor y dejamos vacion el metodo run">
+      <option name="closed" value="true" />
+      <created>1759746295284</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1759746295284</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -194,6 +205,7 @@
     <MESSAGE value="Correcion de mapa y implementacion de main para ver el mapa" />
     <MESSAGE value="añadir .gitignore básico para proyecto Java" />
     <MESSAGE value="creamos la clase hormiga y en el mapa para mostrar mapa en el main" />
-    <option name="LAST_COMMIT_MESSAGE" value="creamos la clase hormiga y en el mapa para mostrar mapa en el main" />
+    <MESSAGE value="creamos la clase HormigaObrera con su constructor y dejamos vacion el metodo run" />
+    <option name="LAST_COMMIT_MESSAGE" value="creamos la clase HormigaObrera con su constructor y dejamos vacion el metodo run" />
   </component>
 </project>
