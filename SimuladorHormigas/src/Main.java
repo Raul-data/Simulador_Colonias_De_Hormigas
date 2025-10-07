@@ -11,6 +11,13 @@ public class Main {
 
             //mostramos el mapa
             mapa.mostrarMapa();
+
+            //Creamos la simulacion de la colonia
+            SimuladorColoniasHormigas simulador  = new SimuladorColoniasHormigas();
+
+            //generar las hormigas obreraras
+            simulador.generarHormigaObrera();
+
         }catch (Exception e){
             System.err.println("Error al preparar Mapa: " + e.getMessage());
         }

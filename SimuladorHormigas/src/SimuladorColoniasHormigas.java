@@ -37,8 +37,39 @@ public class SimuladorColoniasHormigas {
 
     //Creamos los metodos
     //metodo generar hormigas obreras y colocarlas en el mapa
+    //0(n)
     public void generarHormigaObrera(){
-        //Lo implementamos mas tarde
+        int numeroHormiga = NUMERO_HORMIGUERO; //Numero total de hormigas obrearas para crear
+
+        //Creamos el bucle para generar las hormigas una a una
+        for (int i = 0; i < numeroHormiga; i++) {
+
+            //Generamos posiciones aleatorioas dentro de los limites del mapa
+            //0(1) -> solo estamos generando numeros aleatorios
+            int x = random.nextInt(Mapa.ANCHO);
+            int y = random.nextInt(Mapa.ALTO);
+
+            Posicion posicionInicial = new Posicion(x, y); // creamos la nueva posicion con esas cordenadas previas
+
+            //Creamos el identificador unico para cada hormiga
+            String id = "OBRERA_" + (i + 1);
+
+            //creamos nueva hormiga obrera con su ID y su posicion inical
+            Hormiga obrera = new HormigaObrera(id,posicionInicial);
+
+            //La agregamos al hasmap
+            hormigas.put(id, obrera);
+
+            //que nos muestre la informacion de las hormigas creadas
+            System.out.println("Hormiga creada: " + obrera.toString());
+
+
+        }
+        //Mostramos el resumen final de las hormigas mostradas
+        System.out.println("\nSe han generado " + hormigas.size() + " hormigas obreras.\n");
+
+        //llamamos actualizarVisualizacion para refrescar el mapa
+        actualizarVisualizacion();
     }
 
     //metodo que ejecuta la simulacion
@@ -54,7 +85,10 @@ public class SimuladorColoniasHormigas {
 
     //metodo que actualiza la visualizacion del mapa periodicamente
     private void actualizarVisualizacion(){
-        //por ahora lo dejamos vacio
+        limpiarConsola();
+        mapa.prepararMapa(hormigas);
+        mapa.mostrarMapa();
+        mostrarEstadisticas();
     }
 
     //metodo mueve todas las hormigas
@@ -78,6 +112,7 @@ public class SimuladorColoniasHormigas {
         System.out.println("Hormigas activas: " + hormigas.size());
         System.out.println("Intervalo de actualizaciones: " + INTERVALO_ACTUALIZACION);
         System.out.println("Hormiguero en: X = " + mapa.getHormiguero().getX() +  " Y = " + mapa.getHormiguero().getY());
+        System.out.println("Estado: " + (simulacionActiva ? "ACTIVA" : "INACTIVA"));
     }
 
 }

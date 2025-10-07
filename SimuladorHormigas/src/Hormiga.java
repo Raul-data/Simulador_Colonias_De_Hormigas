@@ -64,4 +64,14 @@ public abstract class Hormiga extends Thread {
 
     }
 
+    //Creamos el metodo toString para mostrar informacion que se pueda entender a la hora de mostrar las hormigas creadas
+    @Override
+    public String toString(){
+        return "Hormigas ID: " + id +
+                " | Tipo: " + tipo.getNombre() +
+                " | Simbolo: " + tipo.getSimbolo() +
+                " | Posicion: (" + posicion.getX() + ", " + posicion.getY() + ")";
+
+    }
+
 }

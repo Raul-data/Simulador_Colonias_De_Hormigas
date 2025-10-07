@@ -82,11 +82,11 @@ public class Mapa {
         mapa[hormiguero.getY()][hormiguero.getX()] = HORMIGUERO;
 
         //Colocamos hormigas en el mapa
-//        for(Hormiga hormiga : hormigas.values()){
-//            Posicion pos = hormiga.getPosicion();
-//            if(dentroLimites(pos)){
-//                mapa[pos.getY()][pos.getX()] = hormiga.getTipo().getSimbolo().charAt(0);
-//            }
-//        }
+        for(Hormiga hormiga : hormigas.values()){
+            Posicion pos = hormiga.getPosicion();
+            if(dentroLimites(pos)){
+                mapa[pos.getY()][pos.getX()] = hormiga.getTipo().getSimbolo().charAt(0);
+            }
+        }
     }
 }
