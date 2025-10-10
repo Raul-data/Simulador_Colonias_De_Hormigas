@@ -1,3 +1,5 @@
+
+import java.util.Random;
 /**
  * Clase abstracta que representa una hormiga en el simulador.
  * <p>
@@ -7,8 +9,6 @@
  * de hormigas (OBRERA, GUERRERA, REINA).
  *
  */
-import java.util.Random;
-
 public abstract class Hormiga extends Thread {
     // Creamos los atributos
     /** Identificador único de la hormiga. */

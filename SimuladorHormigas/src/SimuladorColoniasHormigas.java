@@ -1,3 +1,5 @@
+import java.util.HashMap;
+import java.util.Random;
 /**
  * Clase principal del simulador de colonias de hormigas.
  * Proporciona la lógica central para gestionar la simulación de hormigas.
@@ -9,9 +11,6 @@
  * - Manejo de hilos y sincronización.
  *
  */
-import java.util.HashMap;
-import java.util.Random;
-
 public class SimuladorColoniasHormigas {
 
     // Constantes de configuración
