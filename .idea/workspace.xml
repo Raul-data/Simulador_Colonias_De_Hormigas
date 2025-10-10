@@ -5,15 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9ee8a8c2-41f1-4482-9b45-774f0950a65d" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SimuladorHormigas/src/Hormiga.java" beforeDir="false" afterPath="$PROJECT_DIR$/SimuladorHormigas/src/Hormiga.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SimuladorHormigas/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/SimuladorHormigas/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SimuladorHormigas/src/Mapa.java" beforeDir="false" afterPath="$PROJECT_DIR$/SimuladorHormigas/src/Mapa.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SimuladorHormigas/src/SimuladorColoniasHormigas.java" beforeDir="false" afterPath="$PROJECT_DIR$/SimuladorHormigas/src/SimuladorColoniasHormigas.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SimuladorHormigas/Hormiga.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SimuladorHormigas/Hormiga.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SimuladorHormigas/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SimuladorHormigas/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SimuladorHormigas/Mapa.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SimuladorHormigas/Mapa.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SimuladorHormigas/SimuladorColoniasHormigas.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SimuladorHormigas/SimuladorColoniasHormigas.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,6 +50,7 @@
     &quot;Application.PruebaPosicion.executor&quot;: &quot;Run&quot;,
     &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
@@ -64,6 +59,10 @@
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;onboarding.tips.debug.path&quot;: &quot;C:/DAM 2º/Procesos/Trabajos/Simulador_Colonias_De_Hormigas/SimuladorHormigas/src/Main.java&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;SDKs&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.customizations&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -93,7 +92,10 @@
       <workItem from="1759413879162" duration="607000" />
       <workItem from="1759497999900" duration="2740000" />
       <workItem from="1759653390534" duration="11385000" />
-      <workItem from="1759822168346" duration="1978000" />
+      <workItem from="1759822168346" duration="2502000" />
+      <workItem from="1760098433140" duration="1777000" />
+      <workItem from="1760105181375" duration="94000" />
+      <workItem from="1760127914643" duration="2019000" />
     </task>
     <task id="LOCAL-00001" summary="new">
       <option name="closed" value="true" />
@@ -191,7 +193,15 @@
       <option name="project" value="LOCAL" />
       <updated>1759748378521</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="renovaciones de clases y rellenar huecos vacios">
+      <option name="closed" value="true" />
+      <created>1759824407819</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1759824407819</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -221,6 +231,7 @@
     <MESSAGE value="creamos la clase hormiga y en el mapa para mostrar mapa en el main" />
     <MESSAGE value="creamos la clase HormigaObrera con su constructor y dejamos vacion el metodo run" />
     <MESSAGE value="creamos la clase SimuladorColoniasHormigas" />
-    <option name="LAST_COMMIT_MESSAGE" value="creamos la clase SimuladorColoniasHormigas" />
+    <MESSAGE value="renovaciones de clases y rellenar huecos vacios" />
+    <option name="LAST_COMMIT_MESSAGE" value="renovaciones de clases y rellenar huecos vacios" />
   </component>
 </project>
