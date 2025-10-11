@@ -155,13 +155,33 @@ public class SimuladorColoniasHormigas {
      * <p>
      * Selecciona una dirección aleatoria y actualiza la posición de la hormiga.
      * Este método es sincronizado para evitar conflictos.
-     * Actualmente está vacío.
      *
      * @param hormiga La hormiga a mover.
      */
     // metodo mueve una hormiga aleatoriamente
     private synchronized void moverHormigaAleatoriamente(Hormiga hormiga) {
-        // por ahora lo dejamos vacio
+        //1. Elegir una direccion aleatoria (0-3)
+        int indiceDireccion = random.nextInt(DIRECCIONES.length);
+        int[] direcciones = DIRECCIONES[indiceDireccion];
+
+        //2. Obtener posicion actual
+        Posicion posicionActual = hormiga.getPosicion();
+
+        //3. Calcular nueva posicion
+        Posicion nuevaPosicion = posicionActual.mover(direcciones[0], direcciones[1]);
+
+        //4. Verificar que la nueva posicion es valida
+        if (mapa.dentroLimites(nuevaPosicion)) {
+            //5. verificar que no es la posicion del hormiguero
+            Posicion hormiguero = mapa.getHormiguero();
+            boolean esHormiguero = (nuevaPosicion.getX() == hormiguero.getX()) && (nuevaPosicion.getY() == hormiguero.getY());
+
+            if (!esHormiguero) {
+                //6. por ultimo mover hormiga
+                hormiga.setPosicion(nuevaPosicion);
+            }
+        }
+        // Si no es válida, la hormiga se queda donde está
     }
 
     /**
