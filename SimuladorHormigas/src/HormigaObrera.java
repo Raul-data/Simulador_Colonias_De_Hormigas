@@ -4,7 +4,6 @@
  * Esta clase extiende Hormiga y define específicamente el comportamiento de una hormiga obrera,
  * inicializándola con un identificador y una posición inicial. Utiliza la herencia para
  * aprovechar los atributos y métodos de la clase base Hormiga.
- *
  */
 public class HormigaObrera extends Hormiga {
     /**
@@ -13,7 +12,7 @@ public class HormigaObrera extends Hormiga {
      * Inicializa una hormiga obrera con un identificador único y una posición inicial,
      * llamando al constructor de la clase padre Hormiga con el tipo OBRERA.
      *
-     * @param id Identificador único de la hormiga obrera.
+     * @param id              Identificador único de la hormiga obrera.
      * @param posicionInicial Posición inicial de la hormiga obrera en el mapa.
      */
     // Creamos el constructor, que recibe el id y la posición donde nace la obrera

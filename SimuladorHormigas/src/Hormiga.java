@@ -1,5 +1,6 @@
 
 import java.util.Random;
+
 /**
  * Clase abstracta que representa una hormiga en el simulador.
  * <p>
@@ -7,23 +8,34 @@ import java.util.Random;
  * incluyendo su identificación, tipo, posición y estado. Extiende Thread para
  * permitir la ejecución concurrente y sirve como base para tipos específicos
  * de hormigas (OBRERA, GUERRERA, REINA).
- *
  */
 public abstract class Hormiga extends Thread {
     // Creamos los atributos
-    /** Identificador único de la hormiga. */
+    /**
+     * Identificador único de la hormiga.
+     */
     protected final String id; // identificador unico de la hormiga
-    /** Tipo de hormiga (OBRERA, GUERRERA, REINA). */
+    /**
+     * Tipo de hormiga (OBRERA, GUERRERA, REINA).
+     */
     protected final TipoHormiga tipo; // Tipo de hormiga (OBRERA,GUERRERA,REINA)
-    /** Posición actual de la hormiga en el mapa, modificable de forma segura. */
+    /**
+     * Posición actual de la hormiga en el mapa, modificable de forma segura.
+     */
     protected volatile Posicion posicion; // Posicion actual de la hormiga en el mapa
-    /** Estado activo/inactivo de la hormiga, controlado con modificadores volátiles. */
+    /**
+     * Estado activo/inactivo de la hormiga, controlado con modificadores volátiles.
+     */
     protected volatile boolean activa; // estado activo/inactivo de la hormiga
-    /** Generador aleatorio para comportamientos de la hormiga. */
+    /**
+     * Generador aleatorio para comportamientos de la hormiga.
+     */
     protected final Random random; // generador aleatorio para comportamientos
 
     // Creamos las direcciones posibles de movimiento
-    /** Arreglo de direcciones posibles para el movimiento: {derecha, abajo, arriba, izquierda}. */
+    /**
+     * Arreglo de direcciones posibles para el movimiento: {derecha, abajo, arriba, izquierda}.
+     */
     protected static final int[][] DIRECCIONES = {
             {0, 1}, // derecha
             {1, 0}, // abajo
@@ -37,8 +49,8 @@ public abstract class Hormiga extends Thread {
      * Inicializa los atributos de la hormiga con un identificador único, tipo,
      * posición inicial y configura el estado activo y el generador aleatorio.
      *
-     * @param id Identificador único de la hormiga.
-     * @param tipo Tipo de hormiga (OBRERA, GUERRERA, REINA).
+     * @param id              Identificador único de la hormiga.
+     * @param tipo            Tipo de hormiga (OBRERA, GUERRERA, REINA).
      * @param posicionInicial Posición inicial de la hormiga en el mapa.
      */
     // Creamos el constructor Hormiga

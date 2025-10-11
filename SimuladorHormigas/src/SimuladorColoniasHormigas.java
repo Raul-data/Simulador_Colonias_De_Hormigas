@@ -1,5 +1,6 @@
 import java.util.HashMap;
 import java.util.Random;
+
 /**
  * Clase principal del simulador de colonias de hormigas.
  * Proporciona la lógica central para gestionar la simulación de hormigas.
@@ -9,16 +10,21 @@ import java.util.Random;
  * - Control de movimiento con verificación de límites.
  * - Actualización de la visualización.
  * - Manejo de hilos y sincronización.
- *
  */
 public class SimuladorColoniasHormigas {
 
     // Constantes de configuración
-    /** Número total de hormigueros en la simulación. */
+    /**
+     * Número total de hormigueros en la simulación.
+     */
     private static final int NUMERO_HORMIGUERO = 5;
-    /** Intervalo de actualización en milisegundos. */
+    /**
+     * Intervalo de actualización en milisegundos.
+     */
     private static final int INTERVALO_ACTUALIZACION = 100;
-    /** Arreglo de direcciones posibles para el movimiento de hormigas: {derecha, abajo, arriba, izquierda}. */
+    /**
+     * Arreglo de direcciones posibles para el movimiento de hormigas: {derecha, abajo, arriba, izquierda}.
+     */
     private static final int[][] DIRECCIONES = {
             {0, 1},  // Derecha
             {1, 0},  // Abajo
@@ -27,13 +33,21 @@ public class SimuladorColoniasHormigas {
     };
 
     // Atributos
-    /** Mapa que representa el entorno de la simulación. */
+    /**
+     * Mapa que representa el entorno de la simulación.
+     */
     private Mapa mapa;
-    /** HashMap que almacena todas las hormigas activas con su ID como clave. */
+    /**
+     * HashMap que almacena todas las hormigas activas con su ID como clave.
+     */
     private HashMap<String, Hormiga> hormigas;
-    /** Estado de la simulación, controlado con modificadores volátiles para hilos. */
+    /**
+     * Estado de la simulación, controlado con modificadores volátiles para hilos.
+     */
     private volatile boolean simulacionActiva;
-    /** Generador de números aleatorios para movimientos y posiciones. */
+    /**
+     * Generador de números aleatorios para movimientos y posiciones.
+     */
     private final Random random;
 
     /**
