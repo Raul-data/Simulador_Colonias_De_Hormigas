@@ -1,13 +1,23 @@
-# Ignorar carpetas de compilación
+# Java
+*.class
+*.jar
+*.war
+target/
+build/
+bin/
 out/
 
-# Ignorar archivos compilados de Java
-*.class
-
-# Ignorar configuración local de IntelliJ
+# IDEs
 .idea/
+.vscode/
 *.iml
 
-# Archivos del sistema
+# System
 .DS_Store
 Thumbs.db
+
+# Documents
+*.pdf
+*.doc
+*.docx
+*.xlsx

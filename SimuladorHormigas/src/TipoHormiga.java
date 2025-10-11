@@ -7,8 +7,17 @@
 // Enumeracion que define los tipos de hormigas
 public enum TipoHormiga {
     // Ceamos las constantes que seran los tipos de hormiga
+    /**
+     * Tipo de hormiga obrera, representada por 'O' y el nombre "Obrera".
+     */
     OBRERA("O", "Obrera"),
+    /**
+     * Tipo de hormiga guerrera, representada por 'G' y el nombre "Guerra".
+     */
     GUERRERA("G", "Guerra"),
+    /**
+     * Tipo de hormiga reina, representada por 'R' y el nombre "Reina".
+     */
     REINA("R", "Reina");
 
     // Atributos

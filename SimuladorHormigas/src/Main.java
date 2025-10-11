@@ -7,7 +7,18 @@ import java.util.HashMap;
  * y ejecutando la lógica básica del simulador, incluyendo la generación de hormigas obreras.
  * Maneja excepciones para garantizar una ejecución robusta.
  */
+
 public class Main {
+    /**
+     * Constructor por defecto de la clase Main.
+     * <p>
+     * Inicializa una instancia de la clase sin parámetros adicionales.
+     * Este constructor es implícito pero se documenta explícitamente para evitar advertencias.
+     */
+    public Main() {
+        // Constructor vacío, no realiza acciones específicas
+    }
+
     /**
      * Método principal que inicia la simulación de colonias de hormigas.
      * <p>

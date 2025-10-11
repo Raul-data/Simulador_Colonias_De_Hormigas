@@ -1,3 +1,4 @@
+import java.util.HashMap;
 /**
  * Clase que representa el mapa del simulador donde se mueven las hormigas.
  * <p>
@@ -5,8 +6,6 @@
  * y posiciones para hormigas. Proporciona métodos para inicializar, preparar y mostrar el mapa,
  * verificando límites y sincronizando accesos para hilos.
  */
-
-import java.util.HashMap;
 
 // clase que representa el mapa donde se mueven las hormigas
 public class Mapa {
