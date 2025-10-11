@@ -112,7 +112,42 @@ public class SimuladorColoniasHormigas {
      */
     // metodo que ejecuta la simulacion
     public void ejecutar() {
-        // por ahora vacio
+        System.out.println("||||| INICIO DE SIMULACION |||||");
+
+        //generar las hormigas obreras
+        generarHormigaObrera();
+
+        //Activar la simulacion
+        simulacionActiva = true;
+
+        //Bucle principal de simulacion
+        int iteracion = 0;
+        while (simulacionActiva && iteracion < 10){ //Ponemos 10 iteraciones como ejemplo
+            try{
+                //Mover todas las hormigas
+                moverTodasLasHormigas();
+
+                //Actulizar la visualizacion
+                actualizarVisualizacion();
+
+                //Mostramos el numero de iteraciones
+                System.out.println("Iteracion: " + (iteracion + 1));
+
+                //Esperamos antes de la siguiente actualizacion
+                Thread.sleep(INTERVALO_ACTUALIZACION);
+
+                iteracion++;
+            }catch (InterruptedException e){
+                System.err.println("Error en la simulacion: " + e.getMessage());
+                break;
+            }
+
+        }
+
+        //Detenemos la simulacion
+        detenerSimulacion();
+        System.out.println("\nSimulacion completada despues de " + iteracion + " iteraciones\n");
+
     }
 
     /**
