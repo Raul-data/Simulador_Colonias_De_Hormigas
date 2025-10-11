@@ -143,11 +143,15 @@ public class SimuladorColoniasHormigas {
      * Mueve todas las hormigas en el simulador.
      * <p>
      * Este método es sincronizado para evitar conflictos en el acceso concurrente.
-     * Actualmente está vacío.
      */
     // metodo mueve todas las hormigas
     private synchronized void moverTodasLasHormigas() {
-        // por ahora lo dejamos vacio
+        for(Hormiga hormiga : hormigas.values()) {
+            if(hormiga.isActiva()) {
+                moverHormigaAleatoriamente(hormiga);
+            }
+        }
+
     }
 
     /**
