@@ -120,8 +120,6 @@ public class Mapa {
             }
         }
 
-        // Colocamos el hormigugero elivo elEngine1:unMap2Map:Factory stuff stuff_: stuff:: stuff stuff stuff:: stuff:: stuff: stuff:: stuff:::: stuff: stuff stuff stuff stuff stuff fu stuff stuff stuff stuff: stuff stuff stuff stuff stuffy stuff stuff stuff stuff stuff ros stuff stuff stuff stuff stuff stuff stuff stuff stuff stuff stuff stuff stuff stuff stuff... wait, no, that's not the point. Anyway, back to the code.
-
         // Colocamos el hormiguero en el centro
         mapa[hormiguero.getY()][hormiguero.getX()] = HORMIGUERO;
 

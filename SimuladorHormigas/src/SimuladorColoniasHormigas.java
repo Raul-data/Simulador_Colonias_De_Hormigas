@@ -230,7 +230,7 @@ public class SimuladorColoniasHormigas {
      */
     // metodo para limpiar consola
     private void limpiarConsola() {
-        System.out.println("\n\n\n\n\n\n\n\n\n\n");
+        System.out.println("\n\n\n\n\n\n\n\n");
     }
 
     /**
