@@ -25,12 +25,12 @@ public class SimuladorColoniasHormigas {
     /**
      * Arreglo de direcciones posibles para el movimiento de hormigas: {derecha, abajo, arriba, izquierda}.
      */
-    private static final int[][] DIRECCIONES = {
-            {0, 1},  // Derecha
-            {1, 0},  // Abajo
-            {-1, 0}, // Arriba
-            {0, -1}  // Izquierda
-    };
+//    private static final int[][] DIRECCIONES = {
+//            {0, 1},  // Derecha
+//            {1, 0},  // Abajo
+//            {-1, 0}, // Arriba
+//            {0, -1}  // Izquierda
+//    };
 
     // Atributos
     /**
@@ -65,26 +65,25 @@ public class SimuladorColoniasHormigas {
     }
 
     /**
-     * Genera hormigas obreras y las coloca en el mapa.
+     * Genera hormigas obreras y LAS INICIA COMO HILOS.
      * <p>
-     * Crea un número fijo de hormigas obreras (definido por NUMERO_HORMIGUERO) con posiciones aleatorias
-     * dentro de los límites del mapa y las agrega al HashMap de hormigas.
+     * IMPORTANTE: Aquí se llama a start() que lanza el run() de cada hormiga.
      */
     // Creamos los metodos
-    // metodo generar hormigas obreras y colocarlas en el mapa
-    // 0(n)
+    // metodo generar hormigas obreras y las iniciamos con hilos
     public void generarHormigaObrera() {
-        int numeroHormiga = NUMERO_HORMIGUERO; // Numero total de hormigas obrearas para crear
+        System.out.println("\n---- Generando " + NUMERO_HORMIGUERO + " Hormigas obreras ----\n");
 
         // Creamos el bucle para generar las hormigas una a una
-        for (int i = 0; i < numeroHormiga; i++) {
+        for (int i = 0; i < NUMERO_HORMIGUERO; i++) {
 
-            // Generamos posiciones aleatorias dentro de los limites del mapa
-            // 0(1) -> solo estamos generando numeros aleatorios
-            int x = random.nextInt(Mapa.ANCHO);
-            int y = random.nextInt(Mapa.ALTO);
-
-            Posicion posicionInicial = new Posicion(x, y); // creamos la nueva posicion con esas cordenadas previas
+            //Generar posicion aleatoria evitando el hormiguero
+            Posicion posicionInicial;
+            do{
+                int x = random.nextInt(Mapa.ANCHO);
+                int y = random.nextInt(Mapa.ALTO);
+                posicionInicial = new Posicion(x, y);
+            }while (posicionInicial.getX() == mapa.getHormiguero().getX() && posicionInicial.getY() == mapa.getHormiguero().getY());
 
             // Creamos el identificador unico para cada hormiga
             String id = "OBRERA_" + (i + 1);
@@ -92,8 +91,14 @@ public class SimuladorColoniasHormigas {
             // creamos nueva hormiga obrera con su ID y su posicion inical
             Hormiga obrera = new HormigaObrera(id, posicionInicial);
 
+            //Asignamos referencia al mapa
+            obrera.setMapa(mapa);
+
             // La agregamos al hasmap
             hormigas.put(id, obrera);
+
+            //Iniciar el hilo (llamamos con esto al run())
+            obrera.start();
 
             // que nos muestre la informacion de las hormigas creadas
             System.out.println("Hormiga creada: " + obrera.toString());
@@ -117,26 +122,41 @@ public class SimuladorColoniasHormigas {
         //generar las hormigas obreras
         generarHormigaObrera();
 
+        //Mostramos el estado inicial
+        System.out.println("---Estado inicial---");
+        actualizarVisualizacion();
+
+        // Esperar 2 segundos antes de empezar las iteraciones
+        try{
+            Thread.sleep(2000);
+        }catch(InterruptedException e){
+            System.err.println("Error al esperar: " + e.getMessage());
+        }
+
         //Activar la simulacion
         simulacionActiva = true;
 
         //Bucle principal de simulacion
         int iteracion = 0;
-        while (simulacionActiva && iteracion < 10){ //Ponemos 10 iteraciones como ejemplo
-            try{
-                //Mover todas las hormigas
-                moverTodasLasHormigas();
+        int iteracionesMinimas = 10;
 
-                //Actulizar la visualizacion
+        System.out.println("\nLas hormigas se estan moviendo independientemente");
+
+
+        while (simulacionActiva && iteracion < iteracionesMinimas){ //Ponemos 10 iteraciones como ejemplo
+            try{
+
+                // Solo actulizar la visualizacion ya que las hormigas se mueven solas en sus hilos
                 actualizarVisualizacion();
 
                 //Mostramos el numero de iteraciones
-                System.out.println("Iteracion: " + (iteracion + 1));
+                System.out.println("Iteracion: " + (iteracion + 1) + " de " + iteracionesMinimas + "\n");
 
                 //Esperamos antes de la siguiente actualizacion
                 Thread.sleep(INTERVALO_ACTUALIZACION);
 
                 iteracion++;
+
             }catch (InterruptedException e){
                 System.err.println("Error en la simulacion: " + e.getMessage());
                 break;
@@ -151,14 +171,23 @@ public class SimuladorColoniasHormigas {
     }
 
     /**
-     * Detiene la simulación.
-     * <p>
-     * Cambia el estado de la simulación a inactiva.
+     * Detiene la simulación y todos los hilos de hormigas
      */
     // metodo detener la simulacion
-    // 0(1)
     public void detenerSimulacion() {
+        System.out.println("\n--- Simulacion detenida ---");
         simulacionActiva = false;
+
+        // Detener todas las hormigas
+        for(Hormiga hormiga : hormigas.values()){
+            try{
+                hormiga.join(1000); // Esperar maximo 1 segundo por cada hormmiga
+            }catch (InterruptedException e){
+                System.err.println("Error al esperar hormiga: " + e.getMessage());
+            }
+        }
+
+        System.out.println("Simulacion detenida todos los hilos finalizados\n");
     }
 
     /**
@@ -174,54 +203,6 @@ public class SimuladorColoniasHormigas {
         mostrarEstadisticas();
     }
 
-    /**
-     * Mueve todas las hormigas en el simulador.
-     * <p>
-     * Este método es sincronizado para evitar conflictos en el acceso concurrente.
-     */
-    // metodo mueve todas las hormigas
-    private synchronized void moverTodasLasHormigas() {
-        for(Hormiga hormiga : hormigas.values()) {
-            if(hormiga.isActiva()) {
-                moverHormigaAleatoriamente(hormiga);
-            }
-        }
-
-    }
-
-    /**
-     * Mueve una hormiga de forma aleatoria.
-     * <p>
-     * Selecciona una dirección aleatoria y actualiza la posición de la hormiga.
-     * Este método es sincronizado para evitar conflictos.
-     *
-     * @param hormiga La hormiga a mover.
-     */
-    // metodo mueve una hormiga aleatoriamente
-    private synchronized void moverHormigaAleatoriamente(Hormiga hormiga) {
-        //1. Elegir una direccion aleatoria (0-3)
-        int indiceDireccion = random.nextInt(DIRECCIONES.length);
-        int[] direcciones = DIRECCIONES[indiceDireccion];
-
-        //2. Obtener posicion actual
-        Posicion posicionActual = hormiga.getPosicion();
-
-        //3. Calcular nueva posicion
-        Posicion nuevaPosicion = posicionActual.mover(direcciones[0], direcciones[1]);
-
-        //4. Verificar que la nueva posicion es valida
-        if (mapa.dentroLimites(nuevaPosicion)) {
-            //5. verificar que no es la posicion del hormiguero
-            Posicion hormiguero = mapa.getHormiguero();
-            boolean esHormiguero = (nuevaPosicion.getX() == hormiguero.getX()) && (nuevaPosicion.getY() == hormiguero.getY());
-
-            if (!esHormiguero) {
-                //6. por ultimo mover hormiga
-                hormiga.setPosicion(nuevaPosicion);
-            }
-        }
-        // Si no es válida, la hormiga se queda donde está
-    }
 
     /**
      * Limpia la consola para actualizar la visualización.
@@ -230,7 +211,9 @@ public class SimuladorColoniasHormigas {
      */
     // metodo para limpiar consola
     private void limpiarConsola() {
-        System.out.println("\n\n\n\n\n\n\n\n");
+        for (int i = 0; i < 50; i++){
+            System.out.println();
+        }
     }
 
     /**
