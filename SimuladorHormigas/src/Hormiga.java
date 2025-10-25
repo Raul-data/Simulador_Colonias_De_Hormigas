@@ -31,6 +31,10 @@ public abstract class Hormiga extends Thread {
      * Generador aleatorio para comportamientos de la hormiga.
      */
     protected final Random random; // generador aleatorio para comportamientos
+    /**
+     * Referencia al mapa para verificar límites y hormiguero.
+     */
+    protected Mapa mapa; //Añadimos el atributo mapa
 
     // Creamos las direcciones posibles de movimiento
     /**
@@ -61,6 +65,18 @@ public abstract class Hormiga extends Thread {
         this.posicion = posicionInicial;
         this.random = new Random();
         this.activa = true;
+        this.mapa = null; // se asiganara desde el simulador
+    }
+
+    /**
+     * Establece la referencia del mapa
+     * <p>
+     * necesario para que la hormiga pueda verificar limites y el hormiguero
+     *
+     * @param mapa El mapa del simulador
+     */
+    public void setMapa(Mapa mapa){
+        this.mapa = mapa;
     }
 
     /**
@@ -138,11 +154,75 @@ public abstract class Hormiga extends Thread {
     /**
      * Método run para la ejecución del hilo de la hormiga.
      * <p>
-     * Define el comportamiento concurrente de la hormiga, actualmente vacío.
+     * Implementacion con hilos:
+     * -Cada hormiga se mueve de forma independiente
+     * -duerme entre 0 y 5 segundos entre movimiento
+     * -Verifica limites del mapa y evita el hormiguero
+     * -se ejecuta mientras la hormiga este activa
      */
-    // creamos el metodo run para hilos (Por ahora vacio)
+    // Metodo run para hilos - MOVIMIENTO INDEPENDIENTE
+    // 0(n) -> depende de cuánto tiempo esté activa
     @Override
     public void run() {
+        //Verificamos que tenemos referencia al mapa
+        if(mapa == null){
+            System.err.println("Error: " + id + " no tiene referencia al mapa");
+            return;
+        }
+
+        //Bucle principal: mientras la hormiga este activa
+        while(activa){
+            try{
+                // 1. Dormir entre 0 y 5 segundos (de 0-5000 milisegundos)
+                int tiempoSleep = random.nextInt(5001);
+                Thread.sleep(tiempoSleep);
+
+                // 2. Mover la hormiga aleatoriamente
+                moverAleatoriamente();
+            }catch (InterruptedException e){
+                //Si el hilo es interrumpido
+                System.out.println(id + " fue interrumpido");
+                activa = false;
+                break;
+            }
+        }
+
+        System.out.println(id + " ha terminado su ejecucion");
+    }
+
+
+    /**
+     * Mueve la hormiga aleatoriamente verificando limites
+     * <p>
+     * MEtodo privado que implementa la logica de movimiento:
+     * -Elige una direccion aleatoria
+     * -Calcula nueva posicion
+     * -Verifica limites del mapa
+     * -verifica que no sea el hormiguero
+     * -Actualiiza posicion si es valida
+     */
+    //Metodo para mover la hormiga aleatoriamente
+    //0(1)
+    private void moverAleatoriamente(){
+        //1 . elegir direccion aleatoria
+        int indice = random.nextInt(DIRECCIONES.length);
+        int[] direccion  = DIRECCIONES[indice];
+
+        // 2. Calcular nueva posicion
+        Posicion nuevaPosicion = posicion.mover(direccion[0], direccion[1]);
+
+        // 3. Verificar que esta dentro de limites
+        if (mapa.dentroLimites(nuevaPosicion)) {
+            // 4. Vericar que no es el hormiguero
+            Posicion hormiguero = mapa.getHormiguero();
+            boolean esHormiguero = (nuevaPosicion.getX() == hormiguero.getX() && nuevaPosicion.getY() == hormiguero.getY());
+
+            // 5. Si es valido movemos posicion
+            if(!esHormiguero){
+                this.posicion = nuevaPosicion;
+            }
+        }
+        // y si no es valido la hormiga se queda donde esta
     }
 
     /**
