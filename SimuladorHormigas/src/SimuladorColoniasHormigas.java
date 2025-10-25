@@ -21,7 +21,7 @@ public class SimuladorColoniasHormigas {
     /**
      * Intervalo de actualización en milisegundos.
      */
-    private static final int INTERVALO_ACTUALIZACION = 100;
+    private static final int INTERVALO_ACTUALIZACION = 1000;
     /**
      * Arreglo de direcciones posibles para el movimiento de hormigas: {derecha, abajo, arriba, izquierda}.
      */

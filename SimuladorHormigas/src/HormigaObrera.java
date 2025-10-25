@@ -24,49 +24,12 @@ public class HormigaObrera extends Hormiga {
     /**
      * Método run para la ejecución del hilo de la hormiga obrera.
      * <p>
-     * Define el comportamiento concurrente de la hormiga obrera.
-     * Este método se ejecutará cuando la hormiga se inicie como hilo.
-     * <p>
-     * NOTA: Por ahora está preparado pero no se utiliza activamente.
-     * El movimiento actual lo controla SimuladorColoniasHormigas.moverTodasLasHormigas().
-     * <p>
-     * Cuando se active el sistema de hilos completo, este método:
-     * - Hará que la hormiga se mueva de forma autónoma
-     * - Funcionará independientemente de las otras hormigas
-     * - Se ejecutará en su propio hilo
+     * Por ahora vacío. El comportamiento de movimiento se implementa en la clase padre Hormiga.
      */
-    // Metodo run para hilos
+    // Metodo run vacío (no es para ahora)
     @Override
     public void run() {
-        //Bucle principal mientras la hormiga este activa
-        while (activa){
-            try{
-                /*Comportamiento de la hormiga obrera:
-                Las obreras exploran el mapa de forma autonoma
-                */
-                //1. esperar un tiempo aleatorio entre movimientos
-                // tiempo entre 500 ms y 1500 ms
-                int tiempoEspera = 500 + random.nextInt(1000);
-                Thread.sleep(tiempoEspera);
-
-                /*2. Aquí se podría implementar lógica adicional:
-                - Buscar recursos
-                - Evitar obstáculos
-                - Comunicarse con otras hormigas (feromonas)
-                - Regresar al hormiguero
-
-                Por ahora, el movimiento lo gestiona SimuladorColoniasHormigas
-                Este run() está preparado para expansiones futuras*/
-            }catch (InterruptedException e){
-                //Si el hilo es interrumpido, terminanos el bucle
-                System.out.println(id + " fue interrumpida");
-                activa = false;
-                break;
-            }
-        }
-
-        //Mensaje para cuando la hormiga a terminado su ejecucion
-        System.out.println(id + " ha terminado su ejecucion");
+        // Vacío - el comportamiento está en Hormiga.run()
     }
 
     /**
@@ -76,12 +39,12 @@ public class HormigaObrera extends Hormiga {
      *
      * @return Una cadena con la información de la hormiga obrera.
      */
-    @Override
-    public String toString() {
-        return "HormigaObrera{" +
-                "id='" + id + '\'' +
-                ", posicion=" + "(" + posicion.getX() + ", " + posicion.getY() + ")" +
-                ", activa=" + activa +
-                '}';
-    }
+//    @Override
+//    public String toString() {
+//        return "HormigaObrera{" +
+//                "id='" + id + '\'' +
+//                ", posicion=" + "(" + posicion.getX() + ", " + posicion.getY() + ")" +
+//                ", activa=" + activa +
+//                '}';
+//    }
 }
