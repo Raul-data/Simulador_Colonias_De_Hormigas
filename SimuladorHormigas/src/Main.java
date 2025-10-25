@@ -48,14 +48,16 @@ public class Main {
                 System.out.println("\n¿Quieres continuar con la simulacion? (S/N)");
                 String respuesta = scanner.nextLine().trim().toUpperCase();
 
-                if (respuesta.equals("S") || respuesta.equals("Si") || respuesta.equals("")){
+                if (respuesta.equals("S") || respuesta.equals("Si") || respuesta.equals("si") || respuesta.equals("SI") || respuesta.equals("")){
                     System.out.println("\nContinuamos con 10 interaciones mas\n");
 
                     //Continuar 10 iteraciones mas
-                    continuarSimulacion(simulador, 10);
+                    simulador.continuarIteracion(10);
+
                 }else{
                     continuar = false;
                     System.out.println("\n Finalizando simulacion...");
+                    simulador.detenerSimulacion();
                 }
             }
 

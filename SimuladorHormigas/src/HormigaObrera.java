@@ -27,10 +27,10 @@ public class HormigaObrera extends Hormiga {
      * Por ahora vacío. El comportamiento de movimiento se implementa en la clase padre Hormiga.
      */
     // Metodo run vacío (no es para ahora)
-    @Override
-    public void run() {
-        // Vacío - el comportamiento está en Hormiga.run()
-    }
+//    @Override
+//    public void run() {
+//        // Vacío - el comportamiento está en Hormiga.run()
+//    }
 
     /**
      * Método toString heredado y personalizado para HormigaObrera.

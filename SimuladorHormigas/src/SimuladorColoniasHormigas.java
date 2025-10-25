@@ -64,6 +64,31 @@ public class SimuladorColoniasHormigas {
         this.random = new Random();
     }
 
+
+    /**
+     * Verificamos si una posicion esta ocupada por otra hormiga
+     * <p>
+     * Este metodo es sincronizado para evitar que multiples hormigas intenten moverse simultaneamente
+     * @param posicion
+     * @param idHormigaActual
+     * @return
+     */
+    public synchronized boolean posicionOcupada(Posicion posicion, String idHormigaActual){
+        for (Hormiga hormiga : hormigas.values()){
+            //No comparar con la misma hormiga
+            if(hormiga.getIdHormiga().equals(idHormigaActual)){
+                continue;
+            }
+
+            //Verificar si la otra hormiga esta en esa posicion
+            Posicion posHormiga = hormiga.getPosicion();
+            if (posHormiga.getX() == posicion.getX() && posHormiga.getY() == posicion.getY()){
+                return true; //Posicion ocupada
+            }
+        }
+        return false; //Posicion libre
+    }
+
     /**
      * Genera hormigas obreras y LAS INICIA COMO HILOS.
      * <p>
@@ -93,6 +118,9 @@ public class SimuladorColoniasHormigas {
 
             //Asignamos referencia al mapa
             obrera.setMapa(mapa);
+
+            //asignamos referencia al simulador
+            obrera.setSimulador(this);
 
             // La agregamos al hasmap
             hormigas.put(id, obrera);
@@ -164,10 +192,30 @@ public class SimuladorColoniasHormigas {
 
         }
 
-        //Detenemos la simulacion
-        detenerSimulacion();
-        System.out.println("\nSimulacion completada despues de " + iteracion + " iteraciones\n");
+        // no detenemos la simulación aquí - las hormigas siguen vivas
+        System.out.println("\n✓ Iteraciones mínimas completadas (" + iteracion + " iteraciones)");
+        System.out.println("Las hormigas siguen moviéndose...\n");
 
+    }
+
+    /**
+     * Metodo publico para continuar iteraciones adicionales usado desde el main cuando el usuario quiera continuar
+     */
+    public void continuarIteracion(int numIteraciones){
+        System.out.println("\n--- Continuando con " + numIteraciones + " iteraciones más ---\n");
+
+        for(int i = 0; i < numIteraciones; i++){
+            try{
+                actualizarVisualizacion();
+                System.out.println("Iteracion: " + (i + 1) + " de " + numIteraciones + "\n");
+                Thread.sleep(INTERVALO_ACTUALIZACION);
+            }catch (InterruptedException e){
+                System.err.println("Error durante iteraciones extra: " + e.getMessage());
+                break;
+            }
+        }
+
+        System.out.println("\nIteraciones extras completadas");
     }
 
     /**
@@ -179,6 +227,11 @@ public class SimuladorColoniasHormigas {
         simulacionActiva = false;
 
         // Detener todas las hormigas
+        for (Hormiga hormiga : hormigas.values()){
+            hormiga.detener();
+        }
+
+        //Esperar a que terminen
         for(Hormiga hormiga : hormigas.values()){
             try{
                 hormiga.join(1000); // Esperar maximo 1 segundo por cada hormmiga
@@ -211,7 +264,7 @@ public class SimuladorColoniasHormigas {
      */
     // metodo para limpiar consola
     private void limpiarConsola() {
-        for (int i = 0; i < 50; i++){
+        for (int i = 0; i < 10; i++){
             System.out.println();
         }
     }

@@ -35,6 +35,10 @@ public abstract class Hormiga extends Thread {
      * Referencia al mapa para verificar límites y hormiguero.
      */
     protected Mapa mapa; //Añadimos el atributo mapa
+    /**
+     * Referenciamos al simulador para verificar colisiones
+     */
+    protected SimuladorColoniasHormigas simulador;
 
     // Creamos las direcciones posibles de movimiento
     /**
@@ -66,6 +70,7 @@ public abstract class Hormiga extends Thread {
         this.random = new Random();
         this.activa = true;
         this.mapa = null; // se asiganara desde el simulador
+        this.simulador = null;
     }
 
     /**
@@ -77,6 +82,14 @@ public abstract class Hormiga extends Thread {
      */
     public void setMapa(Mapa mapa){
         this.mapa = mapa;
+    }
+
+    /**
+     * Establecemos la referencia al simulador
+     * lo necesitamos ya que de esta mnera verificamos si una posicion esta ocupada por otra hormiga
+     */
+    public void setSimulador(SimuladorColoniasHormigas simulador){
+        this.simulador = simulador;
     }
 
     /**
@@ -165,7 +178,7 @@ public abstract class Hormiga extends Thread {
     @Override
     public void run() {
         //Verificamos que tenemos referencia al mapa
-        if(mapa == null){
+        if(mapa == null || simulador == null){
             System.err.println("Error: " + id + " no tiene referencia al mapa");
             return;
         }
@@ -179,6 +192,7 @@ public abstract class Hormiga extends Thread {
 
                 // 2. Mover la hormiga aleatoriamente
                 moverAleatoriamente();
+
             }catch (InterruptedException e){
                 //Si el hilo es interrumpido
                 System.out.println(id + " fue interrumpido");
@@ -212,17 +226,23 @@ public abstract class Hormiga extends Thread {
         Posicion nuevaPosicion = posicion.mover(direccion[0], direccion[1]);
 
         // 3. Verificar que esta dentro de limites
-        if (mapa.dentroLimites(nuevaPosicion)) {
-            // 4. Vericar que no es el hormiguero
-            Posicion hormiguero = mapa.getHormiguero();
-            boolean esHormiguero = (nuevaPosicion.getX() == hormiguero.getX() && nuevaPosicion.getY() == hormiguero.getY());
-
-            // 5. Si es valido movemos posicion
-            if(!esHormiguero){
-                this.posicion = nuevaPosicion;
-            }
+        if (!mapa.dentroLimites(nuevaPosicion)){
+            return; // fuera de limites no se mueve
         }
-        // y si no es valido la hormiga se queda donde esta
+
+        // 4. verificamos que no es el hormiguero
+        Posicion hormiguero = mapa.getHormiguero();
+        if (nuevaPosicion.getX() == hormiguero.getX() && nuevaPosicion.getY() == hormiguero.getY()){
+            return;
+        }
+
+            // 5. Verificar que no hay otra hormiga en esa posicion
+        if (simulador.posicionOcupada(nuevaPosicion, this.id)){
+            return; // Posicion ocupada no se mueve
+        }
+
+        // 6. Mover(La posicion esta libre)
+        this.posicion = nuevaPosicion;
     }
 
     /**
