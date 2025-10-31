@@ -48,7 +48,6 @@ public class Posicion {
      * Obtiene la coordenada vertical (y) de la posición.
      * <p>
      * Devuelve el valor de la fila actual.
-     *
      * @return La coordenada y.
      */
     public int getY() {
